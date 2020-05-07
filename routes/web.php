@@ -18,3 +18,6 @@ Route::get('/', function () {
 });
 Route::post("/order", "MenuController@commandHandler");
 Route::post("/requestorder", "IncomingordersController@store");
+Route::get("/getorders", "IncomingordersController@index");
+
+

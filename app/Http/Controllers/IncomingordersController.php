@@ -6,6 +6,7 @@ use App\Menu;
 
 use Illuminate\Http\Request;
 use DB;
+use App\IncomingOrders;
 
 
 class IncomingordersController extends Controller
@@ -28,6 +29,12 @@ class IncomingordersController extends Controller
         $data['email'] = $request->input('email');
         $data['message'] = $request->input('message');
         DB::table('orders')->insert($data);
+    }
 
+    public function index()
+    {
+        $tasks = orders::all();
+
+        return response()->json($tasks);
     }
 }
