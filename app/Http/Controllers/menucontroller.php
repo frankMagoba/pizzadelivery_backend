@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Cart;
-use App\Item;
-use App\ItemCart;
+use App\pizza;
+use App\menu;
+use App\pizzamenu;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class menu extends Controller
+class menucontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,7 +41,7 @@ class menu extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'items' => 'required',
+            'pizza' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -63,7 +63,7 @@ class menu extends Controller
         foreach ($request->items as $key => $value) {
 
             if ($this->checkIfInCart($cart->items, $value['id'])) {
-                $item_cart = new ItemMenu();
+                $item_cart = new pizzamenu();
 
                 $item_cart->item_id = $value['id'];
                 $item_cart->quantity = $value['quantity'];

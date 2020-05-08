@@ -4,10 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ItemMenu extends Model
+class menu extends Model
 {
-    protected $table = 'pizza_to_menu';
+    protected $table = 'menu';
     public $timestamps = false;
-    protected $primaryKey = null;
-    public $incrementing = false;
+
+    public function items()
+    {
+        return $this->belongsToMany('App\Item','pizza_to_menu')->withPivot([
+            'quantity',
+        ]);
+    }
 }
