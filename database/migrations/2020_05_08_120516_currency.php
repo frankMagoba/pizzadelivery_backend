@@ -4,20 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMenusTable extends Migration
+class Currency extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-     public function up()
+    public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string("name");
-            $table->string("price");
-            $table->timestamps();
+        Schema::create('currency', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 80);
+            $table->string('symbol', 5);
+            $table->double('exchange_rate');
         });
     }
 
@@ -28,6 +28,6 @@ class CreateMenusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        //
     }
 }
