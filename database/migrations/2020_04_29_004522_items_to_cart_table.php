@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PizzaToOrder extends Migration
+class ItemsToCartTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class PizzaToOrder extends Migration
      */
     public function up()
     {
-        Schema::create('pizza_to_order', function (Blueprint $table) {
-            $table->foreignId('order_id')->references('id')->on('orders');
-            $table->foreignId('pizza_id')->references('id')->on('pizza');
+        Schema::create('items_to_cart', function (Blueprint $table) {
+            $table->foreignId('cart_id')->references('id')->on('cart')
+            ->onDelete('cascade');;
+            $table->foreignId('item_id')->references('id')->on('items')
+            ->onDelete('cascade');;
             $table->integer('quantity');
-            $table->double('price');
         });
     }
 
@@ -28,8 +29,6 @@ class PizzaToOrder extends Migration
      */
     public function down()
     {
-        Schema::table('pizza_to_order', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('items_to_cart');
     }
 }

@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class pizza extends Model
+class Currency extends Model
 {
-    protected $table = 'pizza';
+    protected $table = 'currencies';
     public $timestamps = false;
 }

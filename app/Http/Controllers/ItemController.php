@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\pizza;
+use App\Item;
 
-class pizzacontroller extends Controller
+class ItemController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,10 @@ class pizzacontroller extends Controller
      */
     public function index()
     {
-        $items = pizza::all();
+        $items = Item::all();
         return response()->json([
             'success'=>true,
-            'pizzas'=>$items
+            'items'=>$items
         ]);
     }
 
@@ -50,11 +50,11 @@ class pizzacontroller extends Controller
      */
     public function show($id)
     {
-        $item = pizza::find($id);
+        $item = Item::find($id);
 
         return response()->json([
             'success'=> true,
-            'pizza'=> $item,
+            'item'=> $item,
         ]);
     }
 

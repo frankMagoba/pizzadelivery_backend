@@ -9,13 +9,12 @@ use Illuminate\Support\Facades\Hash;
 use App\User;
 use Carbon\Carbon;
 
-class authentication extends Controller
+class AuthController extends Controller
 {
     /**
      * Login controller function
      */
-    public function login(Request $request)
-    {
+    public function login(Request $request){
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
@@ -37,8 +36,8 @@ class authentication extends Controller
                     $tokenResult->token->expires_at
                 )->toDateTimeString(),
                 'response' => [
-                    'message' => "User authenticated successfully",
-                    'user' => $request->user(),
+                    'message'=>"User authenticated successfully",
+                    'user'=>$request->user(),
                 ]
             ]);
         }
@@ -46,7 +45,7 @@ class authentication extends Controller
         return response()->json([
             'success' => false,
             'response' => [
-                'message' => "Wrong email or password",
+                'message'=>"Wrong email or password",
             ]
         ]);
     }
@@ -54,20 +53,20 @@ class authentication extends Controller
     /**
      * Register User
      */
-    public function register(Request $request)
-    {
+    public function register(Request $request){
 
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(),[
             'email' => 'required|email|unique:users,email',
             'name' => 'required',
             'password' => 'required|confirmed',
         ]);
 
-        if ($validator->fails()) {
+        if ( $validator->fails() ) {
             return response()->json([
                 'success' => false,
                 'errors' => $validator->errors(),
             ]);
+
         }
 
         $user = new User();
@@ -81,8 +80,8 @@ class authentication extends Controller
         return response()->json([
             'success' => true,
             'response' => [
-                'message' => "User registered successfully",
-                'user' => $user,
+                'message'=>"User registered successfully",
+                'user'=>$user,
             ]
         ]);
     }
@@ -90,11 +89,10 @@ class authentication extends Controller
     /**
      * Get autheticated user
      */
-    public function get_auth_user(Request $request)
-    {
+    public function get_auth_user(Request $request){
 
         return response()->json([
-            'user' => $request->user(),
+            'user'=>$request->user(),
         ]);
     }
 
@@ -105,7 +103,7 @@ class authentication extends Controller
     {
         $request->user()->token()->revoke();
         return response()->json([
-            'success' => true,
+            'success'=>true,
             'message' => 'Successfully logged out'
         ]);
     }

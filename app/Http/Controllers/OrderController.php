@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\order;
-use App\menu;
-use App\pizzamenu;
-use App\pizza;
+use App\Order;
+use App\Cart;
+use App\Item;
+use App\ItemOrder;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
-class orderscontroller extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,10 +19,10 @@ class orderscontroller extends Controller
      */
     public function index()
     {
-        $orders = order::where('user_id', Auth::id())->get();
+        $orders = Order::where('user_id', Auth::id())->get();
         $response = [];
 
-        foreach($orders as $order) {
+        foreach($orders as $order) { 
             $total = 0;
             foreach($order->items as $item){
                 $total += $item->price * $item->pivot->quantity;
@@ -59,7 +59,7 @@ class orderscontroller extends Controller
             'phone_number' => 'required',
             'name' => 'required',
             'currency' => 'required',
-            'pizzas' => 'required',
+            'items' => 'required',
         ]);
 
         if ( $validator->fails() ) {
@@ -70,7 +70,7 @@ class orderscontroller extends Controller
 
         }
 
-        $order = new order();
+        $order = new Order();
         // $currency = Currency::find($request->currency);
 
         $order->user_id = $request->user_id ? $request->user_id : null;
@@ -83,8 +83,8 @@ class orderscontroller extends Controller
         $order->save();
 
         foreach ($request->items as $key => $value) {
-            $item_order = new pizzamenu();
-            $item = pizza::find($value['id']);
+            $item_order = new ItemOrder();
+            $item = Item::find($value['id']);
 
             $item_order->order_id = $order->id;
             $item_order->item_id = $item->id;
@@ -95,7 +95,7 @@ class orderscontroller extends Controller
         }
 
         if($request->user_id){
-            $cart = menu::where('user_id',$request->user_id)->delete();
+            $cart = Cart::where('user_id',$request->user_id)->delete();
         }
 
         return response()->json([
@@ -115,7 +115,7 @@ class orderscontroller extends Controller
      */
     public function show($id)
     {
-        $order = order::find($id);
+        $order = Order::find($id);
         $total = 0;
 
         foreach($order->items as $item){

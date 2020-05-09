@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class menu extends Model
+class Cart extends Model
 {
-    protected $table = 'menu';
+    protected $table = 'cart';
     public $timestamps = false;
 
     public function items()
     {
-        return $this->belongsToMany('App\Item','pizza_to_menu')->withPivot([
+        return $this->belongsToMany('App\Item','items_to_cart')->withPivot([
             'quantity',
         ]);
     }

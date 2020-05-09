@@ -18,27 +18,27 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('pizza')->group(function () {
-    Route::get('all', 'pizzacontroller@index');
-    Route::get('{id}', 'pizzacontroller@show');
+Route::prefix('item')->group(function () {
+    Route::get('all', 'ItemController@index');
+    Route::get('{id}', 'ItemController@show');
 });
 
 Route::prefix('order')->group(function () {
-    Route::post('store', 'orderscontroller@store');
-    Route::get('get/{id}', 'orderscontroller@show');
-    Route::get('all', 'orderscontroller@index')->middleware('auth:api');
+    Route::post('store', 'OrderController@store');
+    Route::get('get/{id}', 'OrderController@show');
+    Route::get('all', 'OrderController@index')->middleware('auth:api');
 });
 
 Route::prefix('cart')->group(function () {
-    Route::post('store', 'menucontroller@store')->middleware('auth:api');
-    Route::get('show', 'menucontroller@show')->middleware('auth:api');
-    Route::delete('remove_item/{id}', 'menucontroller@remove_item')->middleware('auth:api');
+    Route::post('store', 'CartController@store')->middleware('auth:api');
+    Route::get('show', 'CartController@show')->middleware('auth:api');
+    Route::delete('remove_item/{id}', 'CartController@remove_item')->middleware('auth:api');
 });
 
 Route::prefix('auth')->group(function () {
-    Route::post('login', 'authentication@login');
-    Route::post('register', 'authentication@register');
-    Route::get('get_user', 'authentication@get_auth_user')->middleware('auth:api');
-    Route::post('logout', 'authentication@logout')->middleware('auth:api');
+    Route::post('login', 'AuthController@login');
+    Route::post('register', 'AuthController@register');
+    Route::get('get_user', 'AuthController@get_auth_user')->middleware('auth:api');
+    Route::post('logout', 'AuthController@logout')->middleware('auth:api');
 });
 

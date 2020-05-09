@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('pizza')->insert([
+          DB::table('items')->insert([
             'name' => "Busia Pizza",
             'price' => 10.5,
             'type' => "pizza",
@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'image_url' => "https://ik.imagekit.io/714jicfzzb/images__7__oehiYXnV7Dk.jpeg",
         ]);
 
-        DB::table('pizza')->insert([
+        DB::table('items')->insert([
             'name' => "Nairobi Pizza",
             'price' => 10.5,
             'type' => "pizza",
@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             'image_url' => "https://ik.imagekit.io/714jicfzzb/images__8__-txOQbA2l6.jpeg",
         ]);
 
-        DB::table('pizza')->insert([
+        DB::table('items')->insert([
             'name' => "Mombasa Pizza",
             'price' => 10.5,
             'type' => "pizza",
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'image_url' => "https://ik.imagekit.io/714jicfzzb/images__9__0bAXVH8aIb.jpeg",
         ]);
 
-        DB::table('pizza')->insert([
+        DB::table('items')->insert([
             'name' => "Kisumu Pizza",
             'price' => 10.5,
             'type' => "pizza",
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
             'image_url' => "https://ik.imagekit.io/714jicfzzb/images__6__VzLRxyEdOPBw.jpeg",
         ]);
 
-        DB::table('pizza')->insert([
+        DB::table('items')->insert([
             'name' => "Eldoret Pizza",
             'price' => 10.5,
             'type' => "pizza",
@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
             'image_url' => "https://ik.imagekit.io/714jicfzzb/images__3__IaCGV9G_l.jpeg",
         ]);
 
-        DB::table('pizza')->insert([
+        DB::table('items')->insert([
             'name' => "Kitale Pizza",
             'price' => 10.5,
             'type' => "pizza",
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             'image_url' => "https://ik.imagekit.io/714jicfzzb/images__2__VXIC2t8bN.jpeg",
         ]);
 
-        DB::table('pizza')->insert([
+        DB::table('items')->insert([
             'name' => "Mandera Pizza",
             'price' => 10.5,
             'type' => "pizza",
@@ -67,7 +67,7 @@ class DatabaseSeeder extends Seeder
             'image_url' => "https://ik.imagekit.io/714jicfzzb/images__4__Rw-M71JSv.jpeg",
         ]);
 
-        DB::table('pizza')->insert([
+        DB::table('items')->insert([
             'name' => "Margarita",
             'price' => 10.5,
             'type' => "pizza",
@@ -75,7 +75,7 @@ class DatabaseSeeder extends Seeder
             'image_url' => "https://ik.imagekit.io/714jicfzzb/images__1__wYMM0yMh2s.jpeg",
         ]);
 
-        DB::table('pizza')->insert([
+        DB::table('items')->insert([
             'name' => "Large Soda",
             'price' => 1.99,
             'type' => "other",
@@ -83,7 +83,7 @@ class DatabaseSeeder extends Seeder
             'image_url' => "https://www.cfacdn.com/img/order/COM/Menu_Refresh/Drinks/Drinks%20PDP/_0000s_0022_Feed_Menu_0000_Drinks_Coca-cola.png",
         ]);
 
-        DB::table('pizza')->insert([
+        DB::table('items')->insert([
             'name' => "Medium Soda",
             'price' => 1,
             'type' => "other",
@@ -91,22 +91,22 @@ class DatabaseSeeder extends Seeder
             'image_url' => "https://ik.imagekit.io/714jicfzzb/images__5__Tapc-58GTDd.jpeg",
         ]);
 
-        DB::table('currency')->insert([
+        DB::table('currencies')->insert([
             'name' => "Dollar",
             'symbol' => "$",
             'exchange_rate' => 1,
         ]);
 
-        DB::table('currency')->insert([
-            'name' => "Shillings",
-            'symbol' => "Ksh",
-            'exchange_rate' => 0.01,
-        ]);
+        DB::table('currencies')->insert([
+            'name' => "Euro",
+            'symbol' => "€",
+            'exchange_rate' => 1.5,
+            ]);
 
         DB::table('users')->insert([
             'name' => "Test User",
             'email' => 'test@testmail.com',
             'password' => bcrypt('123456'),
         ]);
-    }
+}
 }
