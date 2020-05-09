@@ -108,12 +108,12 @@ class menucontroller extends Controller
     {
         $cart = menu::where('user_id', Auth::id())->first();
 
-        $item_cart = DB::table('items_to_cart')->where([['cart_id', '=', $cart->id], ['item_id', '=', $id]])->delete();
+        $item_cart = DB::table('pizza_to_menu')->where([['menu_id', '=', $cart->id], ['pizza_id', '=', $id]])->delete();
 
         if (empty($item_cart)) {
             return response()->json([
                 'success' => false,
-                'message' => "This item isn't in your cart",
+                'message' => "This pizza isn't in your menu",
             ]);
         }
 
