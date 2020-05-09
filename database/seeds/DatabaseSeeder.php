@@ -11,8 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-          DB::table('items')->insert([
-            'name' => "Busia Pizza",
+        DB::table('items')->insert([
+            'name' => "Busia",
             'price' => 10.5,
             'type' => "pizza",
             'description' => "Classic Pizza with mozarella cheese and tomato sauce",
@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('items')->insert([
-            'name' => "Nairobi Pizza",
+            'name' => "Nairobi",
             'price' => 10.5,
             'type' => "pizza",
             'description' => "Pizza served in a square bread, with peperonni and ham",
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('items')->insert([
-            'name' => "Mombasa Pizza",
+            'name' => "Mombasa",
             'price' => 10.5,
             'type' => "pizza",
             'description' => "Pizza with cherry tomatoes, peppers and onions",
@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('items')->insert([
-            'name' => "Kisumu Pizza",
+            'name' => "Kisumu",
             'price' => 10.5,
             'type' => "pizza",
             'description' => "Kisumu Style Pizza, with shredded mozarella cheese and tomatoe sauce",
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('items')->insert([
-            'name' => "Eldoret Pizza",
+            'name' => "Eldoret",
             'price' => 10.5,
             'type' => "pizza",
             'description' => "Also known as the \"The Devil's Pizza\", because it was invented in the depths of hell. Why would you subject yourself to this?",
@@ -52,7 +52,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('items')->insert([
-            'name' => "Kitale Pizza",
+            'name' => "Kitale",
             'price' => 10.5,
             'type' => "pizza",
             'description' => "Kisumu style pizza, served on square bread used as a kind of deep plate",
@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('items')->insert([
-            'name' => "Mandera Pizza",
+            'name' => "Mandera",
             'price' => 10.5,
             'type' => "pizza",
             'description' => "Mandera Style Pizza",
@@ -98,15 +98,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('currencies')->insert([
-            'name' => "Euro",
-            'symbol' => "€",
-            'exchange_rate' => 1.5,
-            ]);
+            'name' => "Shillings",
+            'symbol' => "Ksh",
+            'exchange_rate' => 0.01,
+        ]);
 
         DB::table('users')->insert([
             'name' => "Test User",
             'email' => 'test@testmail.com',
             'password' => bcrypt('123456'),
         ]);
-}
+    }
 }
